@@ -1,1 +1,1 @@
-# Fake News Challenge - MSCI621 Spring'20
+# Fake News Challenge - MSCI 621 Spring'20
