@@ -1,0 +1,3 @@
+[submodule "fnc-1"]
+	path = fnc-1
+	url = https://github.com/FakeNewsChallenge/fnc-1
