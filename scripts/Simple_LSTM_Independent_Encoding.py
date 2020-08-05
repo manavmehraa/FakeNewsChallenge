@@ -29,6 +29,10 @@ FIELDNAMES = ['Headline', 'Body ID', 'Stance']
 Labels = ['agree', 'disagree', 'discuss', 'unrelated']
 di = { Labels[0]:0, Labels[1]:1, Labels[2]:2, Labels[3]:3 }
 
+'''
+This list of stopwords has taken from UCLMR’s public GitHub repository: github.com/uclmr/fakenewschallenge
+Authors :- Benjamin Riedel, Isabelle Augenstein, Georgios Spithourakis, Sebastian Riedel
+'''
 stopWords = [
         "a", "about", "above", "across", "after", "afterwards", "again", "against", "all", "almost", "alone", "along",
         "already", "also", "although", "always", "am", "among", "amongst", "amoungst", "amount", "an", "and", "another",
@@ -145,7 +149,7 @@ for l in file:
     word = values[0]
     value = np.asarray(values[1:], dtype='float32')
     glove_dict[word] = value
-    
+
 file.close()
 
 del file
@@ -164,18 +168,18 @@ train_labels = train_encoder.fit_transform(train_labels)
 test_labels = train_encoder.fit_transform(test_labels)
 
 def get_model(max_Vocab_Size, e_dimension, e_matrix):
-    embedding_layer_input1 = Embedding(input_dim = max_Vocab_Size, 
-                                output_dim = e_dimension, 
-                                embeddings_initializer = keras.initializers.Constant(e_matrix), 
+    embedding_layer_input1 = Embedding(input_dim = max_Vocab_Size,
+                                output_dim = e_dimension,
+                                embeddings_initializer = keras.initializers.Constant(e_matrix),
                                 trainable=False,
                                 )
     input1 = Input((None,), name='lstm1_input')
     x1 = embedding_layer_input1(input1)
     x1 = LSTM(100)(x1)
 
-    embedding_layer_input2 = Embedding(input_dim = max_Vocab_Size, 
-                                output_dim = e_dimension, 
-                                embeddings_initializer = keras.initializers.Constant(e_matrix), 
+    embedding_layer_input2 = Embedding(input_dim = max_Vocab_Size,
+                                output_dim = e_dimension,
+                                embeddings_initializer = keras.initializers.Constant(e_matrix),
                                 trainable=False,
                                 )
     input2 = Input((None,), name='lstm2_input')
@@ -184,7 +188,7 @@ def get_model(max_Vocab_Size, e_dimension, e_matrix):
     x = Concatenate()([x1, x2])
 
     output = Dense(4, activation='softmax')(x)
-    
+
     model = Model([input1,input2], output)
     print(model.summary())
     model.compile(optimizer='sgd', loss='categorical_crossentropy', metrics = ['accuracy'])
@@ -208,7 +212,3 @@ report_score(actual,predicted)
 
 
 # In[ ]:
-
-
-
-

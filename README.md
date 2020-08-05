@@ -7,7 +7,7 @@ Credit:
 * Manav Mehra (m3mehra@uwaterloo.ca)
 
 ## Getting Started
-This code has been run on the Compute Canada servers with 1 Tesla T4 GPU, 8 CPUcores, and a memory size of 30GB. The FNC dataset is included in the ``data`` folder. Code for models is present in ``scripts`` folder. Some scripts require pre-trained 100-d word embedding vectors from Stanford Glove dataset which is not uploaded due to its large size. Before running any model, please download ``glove.6B.zip`` file from [Glove Dataset](https://nlp.stanford.edu/projects/glove/). Copy the ``glove.6B.100d.txt`` file from zipped folder to data folder of our repository. Then you are all set to go.
+This code has been run on the Compute Canada servers with 1 Tesla T4 GPU, 8 CPUcores, and a memory size of 30GB. The FNC dataset is included in the ``data`` folder. Code for models is present in ``scripts`` folder. Some scripts require pre-trained 100-d word embedding vectors from Stanford Glove dataset which is not uploaded due to its large size. Before running any model, please download ``glove.6B.zip`` file from [Glove Dataset](https://nlp.stanford.edu/projects/glove/). Copy the ``glove.6B.100d.txt`` file from zipped folder to ``data`` folder of our repository. Then you are all set to go.
 
 ## Main Dependencies
     Keras==2.4.3        
@@ -40,8 +40,7 @@ There are total 6 files in ``scripts`` folder. 5 of them are the python scripts 
 
 
 ## Scoring Your Classifier
-First of all, you need to login to the server. Download our github repository in the desired location. Example showing steps to run tf-idf implementation on Computer Canada server is given below. The same procedure can be used to run any other model.
+First of all, create python3 virtual environment and download our github repository. Then install all the requirements. Download the 100-d word embeddings vectors file from Stanford Glove dataset as mentioned above and put it in ``data`` folder. Further steps to run tf-idf implementation are given below. The same procedure can be used to run any other model.
 
     cd scripts
     python tf_idf_original_ucl.py
-    

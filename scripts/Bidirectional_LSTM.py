@@ -26,6 +26,11 @@ emb_dimension = 100
 
 FIELDNAMES = ['Headline', 'Body ID', 'Stance']
 Labels = ['agree', 'disagree', 'discuss', 'unrelated']
+
+'''
+This list of stopwords has taken from UCLMR’s public GitHub repository: github.com/uclmr/fakenewschallenge
+Authors :- Benjamin Riedel, Isabelle Augenstein, Georgios Spithourakis, Sebastian Riedel
+'''
 stopWords = [
         "a", "about", "above", "across", "after", "afterwards", "again", "against", "all", "almost", "alone", "along",
         "already", "also", "although", "always", "am", "among", "amongst", "amoungst", "amount", "an", "and", "another",
@@ -146,7 +151,7 @@ for l in file:
     word = values[0]
     value = np.asarray(values[1:], dtype='float32')
     glove_dict[word] = value
-    
+
 file.close()
 
 garbage_words = []
@@ -167,9 +172,9 @@ test_labels = train_encoder.fit_transform(test_labels)
 
 
 def get_model(e_matrix_length, e_dimension, e_matrix):
-    embedding_layer_input = Embedding(input_dim = e_matrix_length, 
-                                output_dim = e_dimension, 
-                                embeddings_initializer=keras.initializers.Constant(e_matrix), 
+    embedding_layer_input = Embedding(input_dim = e_matrix_length,
+                                output_dim = e_dimension,
+                                embeddings_initializer=keras.initializers.Constant(e_matrix),
                                 trainable=True,
                                 )
 
@@ -198,4 +203,3 @@ predicted = [Labels[int(a)] for a in ynew_predicted]
 y_actual = test_stances_df['Stance'].tolist()
 actual = [Labels[int(a)] for a in y_actual]
 report_score(actual,predicted)
-

@@ -23,6 +23,10 @@ from tensorflow.keras.callbacks import EarlyStopping
 FIELDNAMES = ['Headline', 'Body ID', 'Stance']
 Labels = ['agree', 'disagree', 'discuss', 'unrelated']
 
+'''
+This list of stopwords has taken from UCLMR’s public GitHub repository: github.com/uclmr/fakenewschallenge
+Authors :- Benjamin Riedel, Isabelle Augenstein, Georgios Spithourakis, Sebastian Riedel
+'''
 stopWords = [
         "a", "about", "above", "across", "after", "afterwards", "again", "against", "all", "almost", "alone", "along",
         "already", "also", "although", "always", "am", "among", "amongst", "amoungst", "amount", "an", "and", "another",
@@ -88,7 +92,7 @@ for index, row in train_stances_df.iterrows():
 
 for index, row in test_stances_df.iterrows():
     test_article_list.append(test_articles_df.iloc[test_dic_articleId_index[int(row['Body ID'])]]['articleBody'])
-    
+
 train_headlines_list = train_stances_df['Headline'].to_list()
 test_headlines_list = test_stances_df['Headline'].to_list()
 
@@ -126,7 +130,7 @@ def generate_cos_similarity_matrix(hline_tfidf, article_list_tfidf):
     return cos_similarity
 
 cos_similarity_train = generate_cos_similarity_matrix(train_hline_tfidf, train_article_list_tfidf)
-    
+
 cos_similarity_test = generate_cos_similarity_matrix(test_hline_tfidf, test_article_list_tfidf)
 
 print("Building final train and test matrix")
@@ -139,7 +143,7 @@ def generate_final_matrix(hline_tf, article_list_tf, cos_similarity):
         C = cos_similarity[x]
         row = np.squeeze(np.c_[A, B, C])
         final_dense[x] = row
-    
+
     return final_dense
 
 final_train_dense = generate_final_matrix(train_hline_tf, train_article_list_tf, cos_similarity_train)
@@ -161,7 +165,7 @@ def build_model(input_dimension):
     model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
     model.summary()
     return model
-    
+
 model = build_model(final_train_dense.shape[1])
 
 model.fit(final_train_dense, train_labels, epochs=90, batch_size=500, validation_split = 0.1)
@@ -181,7 +185,3 @@ print(classification_report(y_actual, y_predicted, target_names=target_classes))
 
 
 # In[ ]:
-
-
-
-
