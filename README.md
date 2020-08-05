@@ -21,14 +21,16 @@ This repository contains submission for MSCI641 Fake News Challenge Default Proj
 
 ---
 ### Usage
-main.py [-h] [--train_feat TRAIN_FEAT] [--train_model TRAIN_MODEL]
+
+```
+main.py [-h] [--train_feat (y/n)] [--train_model (y/n)]
 
 optional arguments:
   -h, --help            show this help message and exit
-  --train_feat TRAIN_FEAT
-                        Train Features? (y/n)
-  --train_model TRAIN_MODEL
-                        Train Model? (y/n)
+  --train_feat - Train Features? (y/n)
+                        
+  --train_model - Train Model? (y/n)
+```
 
 ---
 The file structure of the repository is as follows -
