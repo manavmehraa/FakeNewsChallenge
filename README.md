@@ -1,6 +1,6 @@
 ## FNC1 Revisited: Two-Step Multilayer Perceptron based Stance Detection
 ---
-This repository contains submission for MSCI641 Fake News Challenge Default Project. The trained model files an fetures are stored in trained.zip. Unzip this to use pretrained model and predict else make a new trained directory and run the main.py file.
+This repository contains submission for MSCI641 Fake News Challenge Default Project. The trained model files an features are stored in **trained.zip**. Unzip this to use pretrained model and predict else make a new **trained** directory and run the main.py file.
 
 #### Predict without training the models
 
@@ -18,6 +18,18 @@ This repository contains submission for MSCI641 Fake News Challenge Default Proj
 4. ```python main.py --train_feat y --train_model y```
 
 ##### The output directory contains the final predicted csv.
+
+---
+### Usage
+main.py [-h] [--train_feat TRAIN_FEAT] [--train_model TRAIN_MODEL]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --train_feat TRAIN_FEAT
+                        Train Features? (y/n)
+  --train_model TRAIN_MODEL
+                        Train Model? (y/n)
+
 ---
 The file structure of the repository is as follows -
 

@@ -3,7 +3,7 @@ import argparse
 from utils.build_model1 import *
 from utils.build_model2 import *
 from utils.predict import predict
-from tensorflow.keras.models import load_model
+
 
 
 parser = argparse.ArgumentParser()
