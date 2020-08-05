@@ -31,4 +31,4 @@ if args.train_model == 'y':
     model2 = build_model2(train_X, test_X, train_y_step_2, test_y_step_2)
     predict(model1, model2, test_X)
 else:
-     from utils.prediction import *
+    from utils.prediction import *
