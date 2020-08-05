@@ -61,7 +61,7 @@ The file structure of the repository is as follows -
     scipy==1.4.1
     tensorflow==2.2.0
 ---
-#### Disclaimer
+### Disclaimer
 **The experiments were performed using a Tesla T4 GPU, 30GB memory and 8 core CPU**
 
 #### Credits
