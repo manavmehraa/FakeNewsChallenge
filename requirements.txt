@@ -1,4 +1,4 @@
-Keras==2.4.3        
+keras==2.4.3        
 nltk==3.5
 numpy==1.19.0
 pandas==1.0.3
