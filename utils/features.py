@@ -421,8 +421,6 @@ def tfidf_cosine(train_df, test_df):
 data_dir = './data/'
 #reading data and upscaling
 train_df, test_df, train_h, train_b, test_h, test_b = read_data(data_dir)
-train_h, train_b = train_h[:2], train_b[:2]
-test_h, test_b = test_h[:2], test_b[:2]
 
 #upscaling
 agree_df = train_df[train_df['Stance']=='agree']
