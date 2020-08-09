@@ -269,6 +269,7 @@ def divergence(h, b):
   return sigma
 
 def kl_divergence(headline, body, eps=0.1):
+#reference: https://github.com/bmaulana/fake-news-challenge/blob/master/main.py
     X = []  
 
     for h, b in zip(headline, body):
@@ -297,7 +298,7 @@ def magnitude(vec):
     return np.sqrt(np.sum(np.square(vec)))
 
 def cosine_similarity_changed(headline, body):
-
+#reference: https://github.com/bmaulana/fake-news-challenge/blob/master/main.py
   headline_vector = getGloveVector(headline)
   body_vector = getGloveVector(body)
 
